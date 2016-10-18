@@ -13,4 +13,4 @@ COPY bitcoin.conf ${BTCDIR}/.bitcoin/
 
 USER bitcoin
 WORKDIR ${BTCDIR}
-CMD ["bitcoind", "-server", "-rpcallowip=10.0.0.0/8", "-rpcallowip=172.16.0.0/12", "-rpcallowip=192.168.0.0/16", "-txindex", "-testnet"]
+CMD ["bitcoind", "-server", "-rpcallowip=10.0.0.0/8", "-rpcallowip=172.16.0.0/12", "-rpcallowip=192.168.0.0/16", "-txindex"]
