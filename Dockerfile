@@ -1,10 +1,10 @@
-FROM debian:experimental
+FROM debian:unstable
 MAINTAINER Nicola Busanello <sudo@inbitcoin.it>
 
 ENV BTCDIR="/srv/bitcoin"
 
 RUN apt-get update && \
-    apt-get install -y bitcoind/experimental && \
+    apt-get install -y bitcoind && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN adduser --home ${BTCDIR} --shell /bin/bash --disabled-login --gecos "bitcoin user" bitcoin && \
