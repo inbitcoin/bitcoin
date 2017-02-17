@@ -19,4 +19,3 @@ EXPOSE 8333/tcp 8332/tcp 18333/tcp 18332/tcp
 VOLUME [$BTCDIR]
 
 ENTRYPOINT ["/sbin/docker-entrypoint.sh", "bitcoind", "-server"]
-CMD ["-rpcuser=rpc", "-rpcpassword=rpc"]
