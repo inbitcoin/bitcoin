@@ -1,5 +1,4 @@
 FROM debian:unstable
-MAINTAINER Nicola Busanello <sudo@inbitcoin.it>
 
 ENV BTCDIR="/srv/btc"
 
