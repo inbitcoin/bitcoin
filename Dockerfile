@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-ENV BTCDIR="/srv/btc" BTCVER="0.13.2" GOSUVER="1.9"
+ENV BTCDIR="/srv/btc" BTCVER="0.14.0" GOSUVER="1.9"
 ENV PATH="/opt/bitcoin-${BTCVER}/bin:$PATH"
 
 RUN apt-get update && \
