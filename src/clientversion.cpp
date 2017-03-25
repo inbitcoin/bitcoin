@@ -13,7 +13,7 @@
  * for both bitcoind and bitcoin-core, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Satoshi BIP148");
+const std::string CLIENT_NAME("Satoshi");
 
 /**
  * Client version number
@@ -98,6 +98,6 @@ std::string FormatSubVersion(const std::string& name, int nClientVersion, const 
             ss << "; " << *it;
         ss << ")";
     }
-    ss << "/";
+    ss << "/UASF-Segwit:0/";;
     return ss.str();
 }
