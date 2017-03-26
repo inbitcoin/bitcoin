@@ -98,6 +98,6 @@ std::string FormatSubVersion(const std::string& name, int nClientVersion, const 
             ss << "; " << *it;
         ss << ")";
     }
-    ss << "/UASF-Segwit:0/";;
+    ss << "/UASF-Segwit:0/";
     return ss.str();
 }
