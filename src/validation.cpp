@@ -1852,10 +1852,12 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     }
 
     // mandatory segwit activation between Oct 1st 2017 and Nov 15th 2017 inclusive
-    if (pindex->GetMedianTimePast() >= 1506816000 && pindex->GetMedianTimePast() <= 1510704000 && !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus())) {
-      if (!((pindex->nVersion & VERSIONBITS_TOP_MASK) == VERSIONBITS_TOP_BITS) && (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) != 0) {
+    if (pindex->GetMedianTimePast() >= 1506816000 &&                          // Sun Oct  1 00:00:00 UTC 2017
+        pindex->GetMedianTimePast() <= 1510704000 &&                          // Wed Nov 15 00:00:00 UTC 2017
+        !IsWitnessEnabled(pindex->pprev, chainparams.GetConsensus()) &&       // segwit not activated yet
+        ((pindex->nVersion & VERSIONBITS_TOP_MASK) != VERSIONBITS_TOP_BITS || // no BIP9 or no segwit
+         (pindex->nVersion & VersionBitsMask(chainparams.GetConsensus(), Consensus::DEPLOYMENT_SEGWIT)) == 0)) {
         return state.DoS(0, error("ConnectBlock(): relayed block must signal for segwit, please upgrade"), REJECT_INVALID, "bad-no-segwit");
-      }
     }
 
     int64_t nTime2 = GetTimeMicros(); nTimeForks += nTime2 - nTime1;
