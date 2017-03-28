@@ -5,8 +5,6 @@
 #ifndef BITCOIN_CLIENTVERSION_H
 #define BITCOIN_CLIENTVERSION_H
 
-#define CLIENT_VERSION_UA "UASF-Segwit 0.1"
-
 #if defined(HAVE_CONFIG_H)
 #include "config/bitcoin-config.h"
 #else
