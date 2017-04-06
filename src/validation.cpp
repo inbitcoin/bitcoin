@@ -2931,7 +2931,6 @@ bool IsWitnessEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& pa
     return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_SEGWIT, versionbitscache) == THRESHOLD_ACTIVE);
 }
 
-// Check if Segregated Witness is Locked In
 bool IsWitnessLockedIn(const CBlockIndex* pindexPrev, const Consensus::Params& params)
 {
     LOCK(cs_main);
