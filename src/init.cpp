@@ -1234,6 +1234,12 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
             uacomments.push_back(cmt);
         }
     }
+    // Add BIP148 enforcement indicator; note this uses characters forbidden by SAFE_CHARS_UA_COMMENT (but not BIP14) to avoid users confusing it with a mere uacomment option
+    if (gArgs.GetBoolArg("-bip148", DEFAULT_BIP148)) {
+        uacomments.push_back("+BIP148");
+    } else {
+        uacomments.push_back("!BIP148");
+    }
     strSubVersion = FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, uacomments);
     if (strSubVersion.size() > MAX_SUBVERSION_LENGTH) {
         return InitError(strprintf(_("Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments."),
