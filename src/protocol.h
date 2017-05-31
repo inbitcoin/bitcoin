@@ -267,6 +267,9 @@ enum ServiceFlags : uint64_t {
     // NODE_XTHIN means the node supports Xtreme Thinblocks
     // If this is turned off then the node will not service nor make xthin requests
     NODE_XTHIN = (1 << 4),
+    // NODE_BIP148 means the node enforces BIP 148's mandatory Segwit activation beginning August 1, 2017
+    // NOTE/FIXME: This is currently a temporary-experiment bit! BIP 148 should perhaps be updated to assign another.
+    NODE_BIP148 = (1 << 27),
 
     // Bits 24-31 are reserved for temporary experiments. Just pick a bit that
     // isn't getting used, or one not being used much, and notify the
