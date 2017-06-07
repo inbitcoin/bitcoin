@@ -1235,7 +1235,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         }
     }
     // Add BIP148 enforcement indicator; note this uses characters forbidden by SAFE_CHARS_UA_COMMENT (but not BIP14) to avoid users confusing it with a mere uacomment option
-    if (gArgs.GetBoolArg("-bip148", DEFAULT_BIP148)) {
+    if (GetBoolArg("-bip148", DEFAULT_BIP148)) {
         uacomments.push_back("+BIP148");
     } else {
         uacomments.push_back("!BIP148");
@@ -1587,7 +1587,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         nRelevantServices = ServiceFlags(nRelevantServices | NODE_WITNESS);
     }
 
-    if (gArgs.GetBoolArg("-bip148", DEFAULT_BIP148)) {
+    if (GetBoolArg("-bip148", DEFAULT_BIP148)) {
         // We want to preferentially peer with other nodes that enforce BIP148, in case of a chain split
         nLocalServices = ServiceFlags(nLocalServices | NODE_BIP148);
         nRelevantServices = ServiceFlags(nRelevantServices | NODE_BIP148);

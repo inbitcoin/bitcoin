@@ -1851,7 +1851,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         flags |= SCRIPT_VERIFY_NULLDUMMY;
     }
 
-    if (gArgs.GetBoolArg("-bip148", DEFAULT_BIP148)) {
+    if (GetBoolArg("-bip148", DEFAULT_BIP148)) {
         // BIP148 mandatory segwit signalling.
         if (!CheckBIP148(pindex, chainparams.GetConsensus())) {
             return state.DoS(0, error("ConnectBlock(): relayed block must signal for segwit, please upgrade"), REJECT_INVALID, "bad-no-segwit");
@@ -3736,7 +3736,7 @@ bool RewindBlockIndex(const CChainParams& params)
     LOCK(cs_main);
 
     int nHeight = 1;
-    bool fCheckBIP148 = gArgs.GetBoolArg("-bip148", DEFAULT_BIP148);
+    bool fCheckBIP148 = GetBoolArg("-bip148", DEFAULT_BIP148);
     while (nHeight <= chainActive.Height()) {
         if (IsWitnessEnabled(chainActive[nHeight - 1], params.GetConsensus()) && !(chainActive[nHeight]->nStatus & BLOCK_OPT_WITNESS)) {
             break;
